@@ -11,21 +11,13 @@ import AddRecette from './screens/AddRecette.js';
  * @flow strict-local
  */
 
-const Stack = createStackNavigator();
+ const Stack = createStackNavigator();
 
 export default Router = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={Home} option={{
-                  headerRight: () => (
-                    <Button
-                      onPress={() => alert('This is a button!')}
-                      title="Info"
-                      color="#fff"
-                    />
-                  ),
-                }}/>
+                <Stack.Screen name="Home" component={Home}/>
                 <Stack.Screen name="AddRecette" component={AddRecette}/>
             </Stack.Navigator>
         </NavigationContainer>
