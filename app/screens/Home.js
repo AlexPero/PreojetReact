@@ -6,6 +6,8 @@ import {useNavigation} from '@react-navigation/native';
 
 export default Home = () => {
     const navigation = useNavigation();
+    
+
     return (
         <View>
             <Text>Add friends here!</Text>
