@@ -1,11 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import { Text, View, Button, TextInput, StyleSheet, Picker, TouchableOpacity } from 'react-native';
+import { Text, View, Button, TextInput, StyleSheet, Picker, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import saveRecette from '../components/LocalStorage'
+import {useNavigation} from '@react-navigation/native';
+
+//lien pour les images:
+// Risotto : 
+// Crepes :
+// salade de riz : https://recette.supertoinette.com/154209/b/salade-de-riz-au-jambon.jpg 
 
 
 export default AddRecette = () => {
-    //const navigation = useNavigation();
+    const navigation = useNavigation();
 
     useEffect(() => {
         displayData();
@@ -17,17 +22,7 @@ export default AddRecette = () => {
             ? setRecette(JSON.parse(localStorageTasks))
             : null;
     };
-
-    const [recette, setRecette] = useState([
-        {
-            id:0,
-            nom:'gaufres',
-            url:'gaufre.png',
-            categorie: 'Dessert',
-            ingredient:'Un peu de tout',
-            description: 'Des gaufres normales'
-        }
-    ]);
+    const [recette, setRecette] = useState([]);
     const [NameValue, setNameValue] = useState('');
     const [urlValue, setUrlValue] = useState('');
     const [categorieValue, setCategorieValue] = useState('');
@@ -40,7 +35,11 @@ export default AddRecette = () => {
         setRecette(newRecette);
         await AsyncStorage.setItem('@recette', JSON.stringify(newRecette));
         console.log(recette)
-        console.log('Je suis après le setItem');
+        Alert.alert('Votre recette à été ajouté avec succés !');
+        console.log(recette);
+        navigation.navigate('Home');
+        
+        //console.log('Je suis après le setItem');
     }
 
     return (
@@ -71,10 +70,11 @@ export default AddRecette = () => {
                     onValueChange={setCategorieValue}
                     style={styles.input}
                 >
-                    <Picker.Item label="Apero" value="apero" />
-                    <Picker.Item label="Entrée" value="entree" />
-                    <Picker.Item label="Plat" value="plat" />
-                    <Picker.Item label="Dessert" value="dessert" />
+                    <Picker.Item label="Apero" value="Apéro" />
+                    <Picker.Item label="Entrée" value="Entrée" />
+                    <Picker.Item label="Plat" value="Plat" />
+                    <Picker.Item label="Dessert" value="Dessert" />
+                    <Picker.Item label="Goûter" value="Goûter" />
                 </Picker>
             </View>
             <View style={styles.inputContainer}>
@@ -98,7 +98,7 @@ export default AddRecette = () => {
             <View style={styles.inputContainer}>
                 <TouchableOpacity 
                     style={styles.appButtonContainer}
-                    onPress={() => saveRecette(NameValue, urlValue, categorieValue, ingredientValue, descrValue)}    
+                    onPress={() => saveRecette(NameValue, urlValue, categorieValue, ingredientValue, descrValue, 'create')}    
                 >
                     <Text style={styles.appButtonText}> Ajouter votre recette</Text>
                 </TouchableOpacity>

@@ -1,31 +1,45 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
-// export default saveRecette = async (name, url, categorie, ingredient, description, action ) => {
-//         try{
-//             const [recette, setRecette] = useState([]);
-//             console.log('La fonction fonctionne.')
-//             let newRecette = [...recette];
-//             switch (action) {
-//                 case 'create':
-//                     console.log('Je rentre dans le create');
-//                     newRecette = [...recette, {id: recette.lenght, name: name, url: url, categorie:categorie, ingredient: ingredient, description:description}];
-//                     console.log(recette);
-//                     setRecette(newRecette);
-//                     await AsyncStorage.setItem(recette, JSON.parse(newRecette));
-//                     console.log('Je suis après le setItem');
-//                     break;
-//                 case 'delete':
-//                     // Pour la fonction delete
-//                     break;
-//                 default:
-//                     console.log('Je ne suis rnetrer dans rien');
-//                     break;
-//             }
-//             console.log('Je sors du Switch')
-            
-//         }catch(err){
-//             console.log(err)
-//         }
-        
+
+// export default useRecetteEffect = async () => {
+//     useEffect(() => {
+//         displayData();
+//     })
 // }
+
+// export default displayData = async () => {
+//     const localStorageTasks = await AsyncStorage.getItem('@recette');
+//     return localStorageTasks != null
+//         ? setRecette(JSON.parse(localStorageTasks))
+//         : null;
+// };
+
+export default localStorageRecette = async () => {
+    
+    
+    const displayData = async () => {
+        const localStorageTasks = await AsyncStorage.getItem('@recette');
+        return localStorageTasks != null
+        ? setRecette(JSON.parse(localStorageTasks))
+        : null;
+    };
+    async function saveRecetteLS(name, url, categorie, ingredient, description, action){ 
+        const [recette, setRecette] = useState([]);
+        let newRecette = [...recette];
+        switch (action) {
+            case 'create':
+                newRecette = [...recette, {id: recette.length, name: name, url: url, categorie:categorie, ingredient: ingredient, description:description}];
+                setRecette(newRecette);
+                await AsyncStorage.setItem('@recette', JSON.stringify(newRecette));
+                console.log(recette)
+                console.log('Je suis après le setItem');
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
+    
