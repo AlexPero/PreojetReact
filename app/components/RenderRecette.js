@@ -1,45 +1,75 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
-export const _renderItem = ({item}) => (
-    <View style={styles.container}>
+
+
+export default RenderItem = ({ displayRecette }) => {
+
+    const navigation = useNavigation();
+
+    return (
         <View>
-            <Image
-            style={{
-                borderBottomLeftRadius: 20,
-                borderTopLeftRadius: 20,
-                height: 120,
-                width: 120
-            }}
-            source={{
-                uri: item.url
-            }}
-            />
+            <TouchableOpacity
+                style={styles.container}
+                onPress={() => {
+                    navigation.navigate('DetailRecette', {
+                        title: displayRecette.name,
+                        description: displayRecette.description,
+                        urlImage: displayRecette.url,
+                        categorie: displayRecette.categorie,
+                        ingredient: displayRecette.ingredient
+                    });
+                }}
+            >
+                <View>
+                    <Image
+                        style={{
+                            borderBottomLeftRadius: 20,
+                            borderTopLeftRadius: 20,
+                            height: 120,
+                            width: 120
+                        }}
+                        source={{
+                            uri: displayRecette.url
+                        }}
+                    />
+                </View>
+                <View>
+                    <Text style={styles.categorie}> {displayRecette.categorie} </Text>
+                    <Text style={styles.title}>{displayRecette.name}</Text>
+                    <Text style={styles.description}>{displayRecette.description}</Text>
+                </View>
+            </TouchableOpacity>
         </View>
-        <View>
-            <Text style={styles.categorie}> {item.categorie} </Text>
-            <Text style={styles.title}>{item.name}</Text>
-        </View>
-    </View>
-)
+    );
+};
 const styles = StyleSheet.create({
-    container:{
-        marginTop:20,
+    container: {
+        marginTop: 20,
         backgroundColor: '#003C62',
         borderRadius: 20,
         flex: 1,
         flexDirection: 'row'
 
     },
-    title:{
+    title: {
+        marginTop: 5,
         textAlignVertical: 'center',
-        textAlign:'center',
+        textAlign: 'center',
         fontSize: 20,
         color: '#EEEEEE'
     },
-    categorie:{
+    categorie: {
         paddingLeft: 20,
         paddingRight: 20,
         backgroundColor: '#EDEDED',
+        maxWidth: 120
+    },
+    description:{
+        color: 'white',
+        textAlign: 'left',
+        marginTop: 2,
+        padding: 10
     }
 })

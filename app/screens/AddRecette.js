@@ -21,7 +21,7 @@ export default AddRecette = () => {
         return localStorageTasks != null
             ? setRecette(JSON.parse(localStorageTasks))
             : null;
-    };
+    http};
     const [recette, setRecette] = useState([]);
     const [NameValue, setNameValue] = useState('');
     const [urlValue, setUrlValue] = useState('');
@@ -36,7 +36,6 @@ export default AddRecette = () => {
         await AsyncStorage.setItem('@recette', JSON.stringify(newRecette));
         console.log(recette)
         Alert.alert('Votre recette à été ajouté avec succés !');
-        console.log(recette);
         navigation.navigate('Home');
         
         //console.log('Je suis après le setItem');

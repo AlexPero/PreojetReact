@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, Button, TouchableOpacity, FlatList } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
-import {_renderItem} from '../components/RenderRecette';
+import RenderItem from '../components/RenderRecette';
 
 
 export default Home = () => {
     const navigation = useNavigation();
     const [displayRecette, setDisplayRecette] = useState([]);
-
-
+    
     useEffect(() => {
-        displayData();    
-    }, []);
+        displayData();
+    },[]);
     
     
     const displayData = async () => {
@@ -34,8 +33,8 @@ export default Home = () => {
             />
             <FlatList
                 data={displayRecette}
-                keyExtractor={(item) => item.id}
-                renderItem={_renderItem}
+                renderItem={({item}) => <RenderItem displayRecette={item} />}
+                keyExtractor={item => item.id}
             />
         </View>
     );
