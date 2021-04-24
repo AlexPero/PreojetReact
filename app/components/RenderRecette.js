@@ -7,13 +7,14 @@ import { useNavigation } from '@react-navigation/native'
 export default RenderItem = ({ displayRecette }) => {
 
     const navigation = useNavigation();
-
+    
     return (
         <View>
             <TouchableOpacity
                 style={styles.container}
                 onPress={() => {
                     navigation.navigate('DetailRecette', {
+                        id: displayRecette.id,
                         title: displayRecette.name,
                         description: displayRecette.description,
                         urlImage: displayRecette.url,
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'left',
         marginTop: 2,
-        padding: 10
+        padding: 10,
+        maxWidth: 300
     }
 })
