@@ -4,10 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 
 //lien pour les images:
-// Risotto : 
-// Crepes :
 // salade de riz : https://recette.supertoinette.com/154209/b/salade-de-riz-au-jambon.jpg 
-
+// Poelée de panée : https://assets.afcdn.com/recipe/20180726/81588_w600.jpg
 
 export default AddRecette = () => {
     const navigation = useNavigation();
@@ -31,11 +29,11 @@ export default AddRecette = () => {
 
     const saveRecette = async (name, url, categorie, ingredient, description) => {
         let newRecette = [...recette];
-        newRecette = [...recette, {id: recette.lenght, name: name, url: url, categorie:categorie, ingredient: ingredient, description:description}];
+        newRecette = [...recette, {id: recette.length, name: name, url: url, categorie:categorie, ingredient: ingredient, description:description}];
         setRecette(newRecette);
         await AsyncStorage.setItem('@recette', JSON.stringify(newRecette));
         console.log(recette)
-        Alert.alert('La recette ' + name + ' a été ajouté avec succés !');
+        Alert.alert('La recette' + ' ' + name + ' ' + 'a été ajouté avec succés !');
         navigation.navigate('Home');
     }
 

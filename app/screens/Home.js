@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Button, TouchableOpacity, FlatList } from 'react-native';
+import { Text, View, Button, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import RenderItem from '../components/RenderRecette';
@@ -23,14 +23,15 @@ export default Home = () => {
     };
     return (
         <View>
-            <Text>Vos recettes ici !</Text>
-
             <Button
                 title="Add recette"
                 onPress={() =>
                     navigation.navigate('AddRecette')
                 }
             />
+
+            <Text style={styles.title}>Le listing des recettes, vous en avez {displayRecette.length} ! </Text>
+
             <FlatList
                 data={displayRecette}
                 renderItem={({item}) => <RenderItem displayRecette={item} />}
@@ -39,3 +40,11 @@ export default Home = () => {
         </View>
     );
 }
+const styles = StyleSheet.create({    
+    title:{
+        fontSize: 15,
+        textAlign: 'center',
+        margin: 10,
+    }
+})
+

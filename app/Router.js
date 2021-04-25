@@ -35,7 +35,7 @@ export default Router = () => {
                 <Stack.Screen 
                     name="DetailRecette" 
                     component={DetailRecette}
-                    options={({route}) => ({title: 'Détail de ' + route.params.title})}
+                    options={({route}) => ({title: route.params.title})}
                 />
             </Stack.Navigator>
         </NavigationContainer>

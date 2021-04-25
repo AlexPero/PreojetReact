@@ -12,20 +12,14 @@ export default DetailRecette = ({route}) => {
     const removeRecette = () => {
         console.log('Fonction relmove')
         recetteToRemove = [...displayRecette];
-        // Copie du tableau asynchrone
-        console.log(displayRecette.id)
-        console.log(route.params.id);
         recetteToRemove = displayRecette.filter(({id}) =>  id !== route.params.id);
-        // On met dans le tableau tout ce qui est différent que l'id de la page (la recette actuelle n'est pas dedans ducoup)
         console.log(recetteToRemove);
         setDisplayRecette(recetteToRemove);
-        // ON met le tableau copié dans le tableau normal
-        AsyncStorage.setItem('@displayRecette', JSON.stringify(recetteToRemove));
-        // On actualise le tableau asynchrone
+        console.log(displayRecette);
+        AsyncStorage.setItem('@recette', JSON.stringify(recetteToRemove));
         console.log(displayRecette)
-        Alert.alert('La recette' + route.params.name + 'a bien été supprimé');
+        Alert.alert('La recette ' + route.params.title + ' a bien été supprimé');
         navigation.navigate('Home');
-        // Après l'appuie sur le bouton, pop-up + redirection sur 'Home'
     }
 
     useEffect(() => {

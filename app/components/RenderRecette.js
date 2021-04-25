@@ -47,7 +47,8 @@ export default RenderItem = ({ displayRecette }) => {
 };
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20,
+        marginTop: 10,
+        margin: 5,
         backgroundColor: '#003C62',
         borderRadius: 20,
         flex: 1,
@@ -65,13 +66,14 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         backgroundColor: '#EDEDED',
-        maxWidth: 120
+        maxWidth: 120,
+        textAlign: 'center'
     },
     description:{
         color: 'white',
         textAlign: 'left',
         marginTop: 2,
         padding: 10,
-        maxWidth: 300
+        maxWidth: 260
     }
 })
