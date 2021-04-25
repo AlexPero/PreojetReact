@@ -11,7 +11,7 @@ export default Home = () => {
     
     useEffect(() => {
         displayData();
-    },[]);
+    }, [displayRecette]);
     
     
     const displayData = async () => {
@@ -23,12 +23,14 @@ export default Home = () => {
     };
     return (
         <View>
-            <Button
-                title="Add recette"
-                onPress={() =>
-                    navigation.navigate('AddRecette')
-                }
-            />
+            <View style={styles.inputContainer}>
+                <TouchableOpacity 
+                    style={styles.appButtonContainer}
+                    onPress={() => navigation.navigate('AddRecette')}   
+                >
+                    <Text style={styles.appButtonText}> Ajouter une recette</Text>
+                </TouchableOpacity>
+            </View>
 
             <Text style={styles.title}>Le listing des recettes, vous en avez {displayRecette.length} ! </Text>
 
@@ -45,6 +47,23 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         margin: 10,
-    }
+    },
+    inputContainer: {
+        padding: 10
+    },
+    appButtonContainer: {
+        elevation: 8,
+        backgroundColor: "#003C62",
+        borderRadius: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 12
+    },
+    appButtonText: {
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        textTransform: "uppercase"
+    },
 })
 
