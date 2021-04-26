@@ -125,13 +125,15 @@ const styles = StyleSheet.create({
     },
     label: {
         paddingLeft: 10,
+        color: '#003C62',
+        fontWeight: 'bold'
     },
     inputContainer: {
-        paddingTop: 15
+        paddingTop: 15,
     },
     input: {
         borderRadius: 20,
-        borderWidth: 1,
+        borderWidth: 3,
         padding: 10,
         borderColor: '#003C62'
 
