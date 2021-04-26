@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, Button, TextInput, StyleSheet, Picker, TouchableOpacity, Alert } from 'react-native';
+import { Text, View, Button, TextInput, StyleSheet,TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import {Picker} from '@react-native-picker/picker';
 
 //lien pour les images:
 // salade de riz : https://recette.supertoinette.com/154209/b/salade-de-riz-au-jambon.jpg 

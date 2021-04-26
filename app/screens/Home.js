@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Button, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import { Text, View, Button, TouchableOpacity, FlatList, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import RenderItem from '../components/RenderRecette';
@@ -31,8 +31,11 @@ export default Home = () => {
                     <Text style={styles.appButtonText}> Ajouter une recette</Text>
                 </TouchableOpacity>
             </View>
-
-            <Text style={styles.title}>Le listing des recettes, vous en avez {displayRecette.length} ! </Text>
+            {displayRecette.length != 0 
+            ? <Text style={styles.title}>Le listing des recettes, vous en avez {displayRecette.length} ! </Text>
+            : <Text style={styles.title}>Vueillez ajoutez une recette en appuyant ci-dessus !</Text>
+            
+            }
 
             <FlatList
                 data={displayRecette}

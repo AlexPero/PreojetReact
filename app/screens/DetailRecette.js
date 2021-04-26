@@ -21,10 +21,10 @@ export default DetailRecette = ({route}) => {
     const confirmationAlert = () => {
         Alert.alert(
             "ATTENTION SUPPRESSION",
-            "Voulez vous vraiment supprimer " + route.params.title + " ? ",
+            "Voulez vous définitevement supprimer " + route.params.title + " ? ",
             [
                 {
-                    text: "Non je ne veux pas",
+                    text: "Annuler",
                     onPress: () => console.log("Cancel Pressed"),
                 },
                 { text: "Oui je le veux", onPress: () => removeRecette() }
@@ -33,7 +33,7 @@ export default DetailRecette = ({route}) => {
     }
 
     
-        useEffect(() => {
+    useEffect(() => {
         displayData();
     },[]);
     
