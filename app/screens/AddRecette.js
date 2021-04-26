@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default AddRecette = () => {
     const navigation = useNavigation();
+    
 
     useEffect(() => {
         displayData();
@@ -131,11 +132,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderWidth: 1,
         padding: 10,
+        borderColor: '#003C62'
 
     },
     appButtonContainer: {
         elevation: 8,
-        backgroundColor: "#009688",
+        backgroundColor: "#003C62",
         borderRadius: 10,
         paddingVertical: 10,
         paddingHorizontal: 12

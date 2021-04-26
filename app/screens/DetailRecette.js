@@ -9,19 +9,16 @@ export default DetailRecette = ({route}) => {
     const navigation = useNavigation();
     
     const removeRecette = () => {
-        console.log('Fonction relmove')
         recetteToRemove = [...displayRecette];
         recetteToRemove = displayRecette.filter(({id}) =>  id !== route.params.id);
-        console.log(recetteToRemove);
         setDisplayRecette(recetteToRemove);
-        console.log(displayRecette);
         AsyncStorage.setItem('@recette', JSON.stringify(recetteToRemove));
         console.log(displayRecette)
         Alert.alert('La recette ' + route.params.title + ' a bien été supprimé');
         navigation.navigate('Home');
     }
 
-    const confirmationAlert = () =>
+    const confirmationAlert = () => {
         Alert.alert(
             "ATTENTION SUPPRESSION",
             "Voulez vous vraiment supprimer " + route.params.title + " ? ",
@@ -33,8 +30,10 @@ export default DetailRecette = ({route}) => {
                 { text: "Oui je le veux", onPress: () => removeRecette() }
             ]
         );
+    }
 
-    useEffect(() => {
+    
+        useEffect(() => {
         displayData();
     },[]);
     

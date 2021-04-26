@@ -21,7 +21,14 @@ export default Router = () => {
     
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
+            <Stack.Navigator 
+                initialRouteName="Home"
+                screenOptions={{
+                    headerTintColor: '#003c62',
+                    headerStyle: { backgroundColor: '#f0faff' },
+                    headerTitleAlign: 'center',
+                }}
+                >
                 <Stack.Screen
                     name="Home"
                     component={Home}
