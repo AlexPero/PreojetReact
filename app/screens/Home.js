@@ -16,7 +16,6 @@ export default Home = () => {
     
     const displayData = async () => {
         const storageRecette = await AsyncStorage.getItem('@recette');
-        //console.log(JSON.parse(storageRecette));
         return storageRecette != null
         ? setDisplayRecette(JSON.parse(storageRecette))
         : null;

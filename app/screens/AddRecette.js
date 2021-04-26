@@ -32,11 +32,9 @@ export default AddRecette = () => {
     const saveRecette = async (name, url, categorie, ingredient, description) => {
         let newRecette = [...recette];
         let idRecette = idGenerator();
-        console.log(idRecette);
         newRecette = [...recette, { id: idRecette, name: name, url: url, categorie: categorie, ingredient: ingredient, description: description }];
         setRecette(newRecette);
         await AsyncStorage.setItem('@recette', JSON.stringify(newRecette));
-        console.log(recette)
         Alert.alert('La recette' + ' ' + name + ' ' + 'a été ajouté avec succés !');
         navigation.navigate('Home');
     }

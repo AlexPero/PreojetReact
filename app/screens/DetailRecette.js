@@ -13,7 +13,6 @@ export default DetailRecette = ({route}) => {
         recetteToRemove = displayRecette.filter(({id}) =>  id !== route.params.id);
         setDisplayRecette(recetteToRemove);
         AsyncStorage.setItem('@recette', JSON.stringify(recetteToRemove));
-        console.log(displayRecette)
         Alert.alert('La recette ' + route.params.title + ' a bien été supprimé');
         navigation.navigate('Home');
     }
@@ -25,7 +24,6 @@ export default DetailRecette = ({route}) => {
             [
                 {
                     text: "Annuler",
-                    onPress: () => console.log("Cancel Pressed"),
                 },
                 { text: "Oui je le veux", onPress: () => removeRecette() }
             ]
